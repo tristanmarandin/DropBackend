@@ -128,7 +128,7 @@ public class ImageController {
             JsonObject requestGson = new JsonObject();
             String engineeredPrompt = formulaireEnvoi.instruction + "((high quality,  best quality, masterpiece, beautiful and aesthetic:1.2))";
 
-            requestGson.addProperty("key", "Qun1A18qioEOi9p6QmEqkEENwPwePQbXnBibjSG5ujyACdyaiEYn4BZ0Dzdr");
+            requestGson.addProperty("key", "");
             requestGson.addProperty("model_id", "base-model");
             if (formulaireEnvoi.selectedButtons.contains("detailed")) {
                 engineeredPrompt += ", ((intricate details, extremely detailed, highly detailed))";
