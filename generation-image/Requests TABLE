@@ -1,0 +1,58 @@
+## USER REQUESTS
+
+1. createAccount(mail_adress, name, password) -> api/user/createAcccount
+Credentials et adresse mail passsés en paramètres. Crée un nouvel utilisateur grâce à ses informations passées en paramètre, et retourne le Userr ainsi créé
+
+2. connect(username, password) -> api/user/connect
+Credentials passés en paramètres. Récupère les informations du User grâce à ses credentials, et retourne le User
+
+3. disconnect(id) -> api/user/disconnect
+UserID passé en paramètre. Change le statut du User.
+
+4. getUserCollections(id) -> api/user/getUserCollections
+UserID passé en paramètre. Récupère la liste des collections d'un utilisateur et la retourne.
+
+5. getUserImages(id) -> api/user/getUserImages
+UserID passé en paramètre. Récupère la liste des images d'un utilisateur et la retourne.
+
+6. modifyUser(User) -> api/user/modifyUser
+Les informations du User en paramètre (dans l'ordre : id, name, password, mail_adress). Modifie les informations relatives au User et retourne le User mis à jour.
+
+7. deleteUser(id) -> api/user/deleteUser
+UserID en paramètre. Supprime le User en BDD.
+
+
+## COLLECTION REQUESTS
+
+1. getCollection(id) -> api/colelction/getCollection
+CollectionID en paramètre. Retourne la collection demandée.
+
+2. setCollection(Collection) -> api/collection/setCollection
+Les information de la collection en paramètres (dans l'ordre : id, name). Modifie la collection (utile seulement pour le nom à priori) et la retourne.
+
+3. createCollection(name, id_creator) -> api/collection/createCollection
+Le nom de la collection et l'ID du créateur en paramètres. Crée la nouvelle collection en BDD.
+
+4. deleteCollection(id) -> api/collection/deleteColelction
+CollectionID en paramètre. Supprime la colelction en BDD.
+
+5. getImagesOfCollection(id) -> api/collection/getImagesOfCollection
+CollectionID en paramètre. Retourne la liste des images appartenant à une collection.
+
+
+## IMAGE REQUESTS
+
+1. getImage(id) -> api/image/getImage
+ImageID en paramètre. Retourne l'image demandée.
+
+2. setImage(Image) -> api/image/setImage
+Les informations de l'image en paramètre (dans l'ordre : id, prompt, negative_prompt, model, seed, step, cfg_scale, url_image, note, height, width, visible). Modifie l'image et la retourne.
+
+3. addImageToCollection(collectionID, imageID) -> api/image/addImageToCollection
+CollectionID et imageID en paramètres. Ajoute l'image à la collection et retourne un message pour s'assurer du succès de l'opération ("Image added", ou "An error occured").
+
+4. removeImageFromCollection(collectionID, imageID) -> api/image/removeImageFromCollection
+CollectionID et imageID en paramètres. Retire l'image de la collection et retourne un message pour s'assurer du succès de l'opération ("Image removed", ou "An error occured").
+
+5. generate(userID, instruction, selectedButtons, buttonLabelsByTab, width, height, seed, generationSteps, guidanceScale) -> api/image/generate
+UserID et informations de l'image en paramètres. Envoie un requête à StableDiffusion et enregistre les images générées en retour. Retourne ensuite les images générées.
